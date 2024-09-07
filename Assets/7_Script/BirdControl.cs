@@ -10,21 +10,22 @@ public class BirdControl : MonoBehaviour
 
     private void Start()
     {
-        // Rigidbody2D ¿¬°á
+        // Rigidbody2D ì—°ê²°
         rb = GetComponent<Rigidbody2D>();    
     }
 
     private void Update()
     {
-        // ¸¶¿ì½ºÅ¬¸¯(È­¸éÅÍÄ¡)¸¦ ÇÏ¸é À§·Î ¿òÁ÷ÀÌ°Ô
+        // ë§ˆìš°ìŠ¤í´ë¦­(í™”ë©´í„°ì¹˜)ì„ í•˜ë©´ 
         if (Input.GetMouseButtonDown(0))
         {
+            // ìœ„ë¡œ ì´ë™
             rb.velocity = Vector2.up * velocity;
         }
     }
     private void FixedUpdate()
     {
-        // update¿¡¼­ º¯°æµÈ velocity.y °ª¸¸Å­ È¸Àü
+        // updateëë‚˜ê³  velocity.y ê°’ë§Œí¼ íšŒì „
         transform.rotation = Quaternion.Euler(0, 0, rb.velocity.y * rotateSpeed);
     }
     private void OnCollisionEnter2D(Collision2D collision)

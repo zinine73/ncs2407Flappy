@@ -7,7 +7,7 @@ public class MovePipe : MonoBehaviour
     [SerializeField] private float speed = 0.65f;
     void Update()
     {
-        // ÆÄÀÌÇÁÀÇ À§Ä¡¸¦ speed¸¸Å­ ÁÂ·Î ÀÌµ¿
+        // íŒŒì´í”„ì˜ ìœ„ì¹˜ë¥¼ speedë§Œí¼ ì¢Œë¡œ ì´ë™
         transform.position += Vector3.left * speed * Time.deltaTime;
     }
 }

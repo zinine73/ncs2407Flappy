@@ -8,6 +8,7 @@ public class Score : MonoBehaviour
     public static Score instance;
     [SerializeField] private TextMeshProUGUI scoreText;
     private int score = 0;
+    
     private void Awake()
     {
         if (instance == null) instance = this;

@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
-        // ÇöÀç ¾ÀÀ» ´Ù½Ã ºÒ·¯¿À±â
+        // í˜„ì¬ ì—´ë ¤ ìˆëŠ” ì”¬ì„ ë‹¤ì‹œ ì²˜ìŒë¶€í„° ë¶ˆëŸ¬ì˜¤ê¸°
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

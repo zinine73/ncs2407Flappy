@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class PipeSpawner : MonoBehaviour
 {
-    [SerializeField] private float maxTime = 1.5f; // ¸îÃÊ¸¶´Ù »ı¼ºÇÒ°ÇÁö
-    [SerializeField] private float heightRange = 0.5f; // »ı¼º À§Ä¡ y ÀÇ ·£´ı ¹üÀ§
-    [SerializeField] private GameObject pipePrefab; // ÆÄÀÌÇÁÀÇ ÇÁ·¹ÆË ¿¬°á
+    [SerializeField] private float maxTime = 1.5f; // ëª‡ì´ˆë§ˆë‹¤ ìƒì„±í• ê±´ì§€
+    [SerializeField] private float heightRange = 0.5f; // ìƒì„± ìœ„ì¹˜ y ì˜ ëœë¤ ë²”ìœ„
+    [SerializeField] private GameObject pipePrefab; // íŒŒì´í”„ì˜ í”„ë ˆíŒ ì—°ê²°
     private float timer; 
 
     void Update()
     {
-        // timer°¡ maxTimeÀ» ³ÑÀ¸¸é
+        // timerê°€ maxTimeì„ ë„˜ìœ¼ë©´
         if (timer > maxTime)
         {
-            // pipe¸¦ ¸¸µå´Â ÇÔ¼ö È£Ãâ
+            // pipeë¥¼ ë§Œë“œëŠ” í•¨ìˆ˜ í˜¸ì¶œ
             SpawnPipe();
-            // timer´Â 0À¸·Î
+            // timerëŠ” 0ìœ¼ë¡œ
             timer = 0;
         }
-        // timer¿¡ deltaTime ´õÇØÁÖ±â
+        // timerì— deltaTime ë”í•´ì£¼ê¸°
         timer += Time.deltaTime;
     }
 
     private void SpawnPipe()
     {
-        // ·£´ıÀ¸·Î y °ª Á¤ÇØ¼­, »ı¼ºµÉ ÆÄÀÌÇÁÀÇ À§Ä¡ Á¤ÇÏ±â
+        // ëœë¤ìœ¼ë¡œ y ê°’ ì •í•´ì„œ, ìƒì„±ë  íŒŒì´í”„ì˜ ìœ„ì¹˜ ì •í•˜ê¸°
         Vector3 spawnPos = transform.position + new Vector3(0, Random.Range(-heightRange, heightRange));
-        // Instantiate·Î »ı¼º, »ı¼ºµÈ °´Ã¼´Â pipe¶ó´Â GameObject¿¡ ÇÒ´ç
+        // Instantiateë¡œ ìƒì„±, ìƒì„±ëœ ê°ì²´ëŠ” pipeë¼ëŠ” GameObjectì— í• ë‹¹
         GameObject pipe = Instantiate(pipePrefab, spawnPos, Quaternion.identity);
-        // 5ÃÊµÚ¿¡ pipe °´Ã¼ ÆÄ±«
+        // 5ì´ˆë’¤ì— pipe ê°ì²´ íŒŒê´´
         Destroy(pipe, 5f);
     }
 }

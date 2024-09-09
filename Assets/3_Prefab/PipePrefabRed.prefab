@@ -74,10 +74,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1372867000, guid: 45eb93d446747e142b85a89fb6766b97, type: 3}
+  m_Sprite: {fileID: -572604592, guid: 45eb93d446747e142b85a89fb6766b97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.26, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1731030402, guid: 45eb93d446747e142b85a89fb6766b97, type: 3}
+  m_Sprite: {fileID: -1278273760, guid: 45eb93d446747e142b85a89fb6766b97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 4167294035593878191}
   - component: {fileID: 5564628515570102404}
   m_Layer: 0
-  m_Name: PipePrefab
+  m_Name: PipePrefabRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,4 +309,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ace157500b01b499f6c34d0b564f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 1
+  scoreValue: 5

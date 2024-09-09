@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null) instance = this;
+        // 정상적인 게임의 시간이 흐르게
         Time.timeScale = 1.0f;
     }
     public void GameOver()
     {
         gameOverUI.SetActive(true);
+        // 게임의 시간을 멈춘다
         Time.timeScale = 0f;
     }
     public void RestartGame()

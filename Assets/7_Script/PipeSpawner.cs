@@ -12,16 +12,20 @@ public class PipeSpawner : MonoBehaviour
 
     void Update()
     {
-        // timer가 maxTime을 넘으면
-        if (timer > maxTime)
+        // 게임상태가 PLAY일때만 파이프를 생성하게 한다
+        if (GameManager.instance.GameState == GameManager.State.PLAY)
         {
-            // pipe를 만드는 함수 호출
-            SpawnPipe();
-            // timer는 0으로
-            timer = 0;
+            // timer가 maxTime을 넘으면
+            if (timer > maxTime)
+            {
+                // pipe를 만드는 함수 호출
+                SpawnPipe();
+                // timer는 0으로
+                timer = 0;
+            }
+            // timer에 deltaTime 더해주기
+            timer += Time.deltaTime;
         }
-        // timer에 deltaTime 더해주기
-        timer += Time.deltaTime;
     }
 
     private void SpawnPipe()

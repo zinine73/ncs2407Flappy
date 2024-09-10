@@ -5,12 +5,12 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    // static ÀØÁö¸»ÀÚ
+    // static ìŠì§€ë§ì
     public static ScoreManager instance;
     [SerializeField] private TextMeshProUGUI scoreText;
     private int score = 0;
     
-    // Awake¿¡¼­ instance ¿¬°á
+    // Awakeì—ì„œ instance ì—°ê²°
     private void Awake()
     {
         if (instance == null) instance = this;

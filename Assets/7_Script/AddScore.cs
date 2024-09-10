@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class AddScore : MonoBehaviour
 {
-    [SerializeField] private int scoreValue; //ÆÄÀÌÇÁ Á¾·ùº°·Î ¾ò°Ô µÇ´Â Á¡¼ö¸¦ ÁöÁ¤
+    [SerializeField] private int scoreValue; //íŒŒì´í”„ ì¢…ë¥˜ë³„ë¡œ ì–»ê²Œ ë˜ëŠ” ì ìˆ˜ë¥¼ ì§€ì •
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // "Player"¶ó´Â ÅÂ±×·Î µé¾î¿Â Æ®¸®°Å¸¸ ÀÎ½Ä
+        // "Player"ë¼ëŠ” íƒœê·¸ë¡œ ë“¤ì–´ì˜¨ íŠ¸ë¦¬ê±°ë§Œ ì¸ì‹
         if (collision.gameObject.CompareTag("Player"))
         {
-            // scoreValue °ªÀ» ½ÇÁ¦ score¿¡ ¾÷µ¥ÀÌÆ®
+            // scoreValue ê°’ì„ ì‹¤ì œ scoreì— ì—…ë°ì´íŠ¸
             ScoreManager.instance.UpdateScore(scoreValue);
         }
     }

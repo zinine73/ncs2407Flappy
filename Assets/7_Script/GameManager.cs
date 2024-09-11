@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     [SerializeField] private SpriteRenderer background;
+    [SerializeField] private Animator floorAnim;
     [SerializeField] private AudioClip acReady;
     [SerializeField] private AudioClip acHit;
     [SerializeField] private GameObject gameOverUI;
@@ -83,10 +84,21 @@ public class GameManager : MonoBehaviour
     {
         ChangeState(State.GAMEOVER);
         PlayAudio(acHit);
-        gameOverUI.SetActive(true);
+        // 바닥 애니메이션을 멈춘다
+        floorAnim.enabled = false;
+        // 코루틴을 이용해서 잠시 시간을 지연시킨다
+        StartCoroutine(StopTimer());
+    }
+
+    IEnumerator StopTimer()
+    {
+        // 2초 기다렸다 다음 로직 실행
+        yield return new WaitForSeconds(2f);
         // 게임의 시간을 멈춘다
         Time.timeScale = 0f;
     }
+
+
     public void RestartGame()
     {
         // 현재 열려 있는 씬을 다시 처음부터 불러오기

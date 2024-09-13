@@ -98,6 +98,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    public void GameHighScore()
+    {
+        ChangeState(State.HISCORE);
+    }
 
     public void RestartGame()
     {

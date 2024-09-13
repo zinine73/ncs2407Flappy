@@ -7,9 +7,13 @@ public class ScoreManager : MonoBehaviour
 {
     // static 잊지말자
     public static ScoreManager instance;
-    [SerializeField] private TextMeshProUGUI scoreText;
+
+    [SerializeField] private PlayCanvas canvas;
+
     private int score = 0;
     
+    public int Score { get { return score; } }
+
     // Awake에서 instance 연결
     private void Awake()
     {
@@ -18,6 +22,6 @@ public class ScoreManager : MonoBehaviour
     public void UpdateScore(int value)
     {
         score += value;
-        scoreText.text = score.ToString();
+        canvas.UpdateScore();
     }
 }

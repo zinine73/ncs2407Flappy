@@ -86,6 +86,8 @@ public class GameManager : MonoBehaviour
         PlayAudio(acHit);
         // 바닥 애니메이션을 멈춘다
         floorAnim.enabled = false;
+        // 하이스코어 체크를 한다
+        ScoreManager.instance.CheckHiScore();
         // 코루틴을 이용해서 잠시 시간을 지연시킨다
         StartCoroutine(StopTimer());
     }

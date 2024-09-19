@@ -15,17 +15,17 @@ public class RankUI : MonoBehaviour
 
     public void SetRank(int rank, int score, string dt)
     {
-        // 3ÀÌ»óÀÌ¸é 3À», ¾Æ´Ï¸é ±× °ªÀ» ÀÎµ¦½º·Î ÇÑ´Ù
+        // 3ì´ìƒì´ë©´ 3ì„, ì•„ë‹ˆë©´ ê·¸ ê°’ì„ ì¸ë±ìŠ¤ë¡œ í•œë‹¤
         int medalIndex = (rank > 2) ? 3 : rank;
-        // ¸Ş´Ş½ºÇÁ¶óÀÌÆ®¿¡ ÀÖ´Â ¸Ş´Ş ¼±ÅÃ
+        // ë©”ë‹¬ìŠ¤í”„ë¼ì´íŠ¸ì— ìˆëŠ” ë©”ë‹¬ ì„ íƒ
         medal.sprite = medalSprite[medalIndex];
-        // ·©Å© °ªÀº 0ºÎÅÍÀÌ¹Ç·Î +1
+        // ë­í¬ ê°’ì€ 0ë¶€í„°ì´ë¯€ë¡œ +1
         rankText.text = (rank + 1).ToString();
-        // ·©Å©°¡ 3ÀÌ»óÀÏ¶§¸¸ Ç¥½Ã
+        // ë­í¬ê°€ 3ì´ìƒì¼ë•Œë§Œ í‘œì‹œ
         rankText.gameObject.SetActive(rank > 2);
 
-        // string ¿¬»êÀ» ¸¹ÀÌ ÇÏ°Ô µÇ¹Ç·Î StringBuilder¸¦ »ç¿ë
-        // "2024/01/01(ÁÙ¹Ù²Ş)09:10:12" Çü½ÄÀ¸·Î º¸ÀÌ°Ô ¸¸µç´Ù
+        // string ì—°ì‚°ì„ ë§ì´ í•˜ê²Œ ë˜ë¯€ë¡œ StringBuilderë¥¼ ì‚¬ìš©
+        // "2024/01/01(ì¤„ë°”ê¿ˆ)09:10:12" í˜•ì‹ìœ¼ë¡œ ë³´ì´ê²Œ ë§Œë“ ë‹¤
         StringBuilder sb = new StringBuilder();
         sb.Append("20");
         sb.Append(dt.Substring(0, 2));
@@ -39,9 +39,9 @@ public class RankUI : MonoBehaviour
         sb.Append(dt.Substring(8, 2));
         sb.Append(":");
         sb.Append(dt.Substring(10, 2));
-        // StringBuilder °ªÀ» ³Ñ±æ¶§´Â ToString() ÀØÁö¸»ÀÚ
+        // StringBuilder ê°’ì„ ë„˜ê¸¸ë•ŒëŠ” ToString() ìŠì§€ë§ì
         dateText.text = sb.ToString();
-        // Á¡¼ö Ç¥½Ã
+        // ì ìˆ˜ í‘œì‹œ
         scoreText.text = score.ToString();
     }
 }

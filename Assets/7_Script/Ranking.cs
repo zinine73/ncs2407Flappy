@@ -6,8 +6,8 @@ using System;
 
 public class Ranking : MonoBehaviour
 {
-    public const int MAX_RANK = 5; // ÃÖ´ë ·©Å© º¸¿©ÁÙ °¹¼ö
-    public static string DTPattern = @"yyMMddhhmmss"; // DateTimeÀ» stringÀ¸·Î ¹Ù²Ü ¶§ ¾µ ÆĞÅÏ
+    public const int MAX_RANK = 5; // ìµœëŒ€ ë­í¬ ë³´ì—¬ì¤„ ê°¯ìˆ˜
+    public static string DTPattern = @"yyMMddhhmmss"; // DateTimeì„ stringìœ¼ë¡œ ë°”ê¿€ ë•Œ ì“¸ íŒ¨í„´
 
     [SerializeField] private RankUI[] ranking;
 
@@ -15,17 +15,17 @@ public class Ranking : MonoBehaviour
     {
         for (int i = 0; i < MAX_RANK; i++)
         {
-            // Å°°ªÀÌ ¾øÀ¸¸é "240101120000" ¿¡ ¸¶Áö¸· °ª¸¸ ¹Ù²Û °ÍÀ» µğÆúÆ®·Î ¸¸µç´Ù
+            // í‚¤ê°’ì´ ì—†ìœ¼ë©´ "240101120000" ì— ë§ˆì§€ë§‰ ê°’ë§Œ ë°”ê¾¼ ê²ƒì„ ë””í´íŠ¸ë¡œ ë§Œë“ ë‹¤
             string key = PlayerPrefs.GetString($"RANKDATE{i}", $"24010112000{i}");
             int value = PlayerPrefs.GetInt($"RANKSCORE{i}", 0);
-            // Hi-Score ¿¡ °¢ ·©Å© ³»¿ë Àü´Ş
+            // Hi-Score ì— ê° ë­í¬ ë‚´ìš© ì „ë‹¬
             ranking[i].SetRank(i, value, key);
         }
     }
 
     public int CalcurateRank(int score)
     {
-        // ÇöÀç ÀúÀåµÈ 1~5 ¼øÀ§ °ªÀ» µñ¼Å³Ê¸®¸¦ »ç¿ëÇØ ÀúÀå
+        // í˜„ì¬ ì €ì¥ëœ 1~5 ìˆœìœ„ ê°’ì„ ë”•ì…”ë„ˆë¦¬ë¥¼ ì‚¬ìš©í•´ ì €ì¥
         Dictionary<string, int> rankDic = new Dictionary<string, int>();
         for (int i = 0; i < MAX_RANK; i++)
         {
@@ -33,29 +33,29 @@ public class Ranking : MonoBehaviour
             int value = PlayerPrefs.GetInt($"RANKSCORE{i}", 0);
             rankDic.Add(key, value);
         }
-        // ÇöÀç ÀÏ½Ã¸¦ ÆĞÅÏÀ» ÀÌ¿ëÇØ Å°°ªÀ¸·Î ¸¸µé°í
+        // í˜„ì¬ ì¼ì‹œë¥¼ íŒ¨í„´ì„ ì´ìš©í•´ í‚¤ê°’ìœ¼ë¡œ ë§Œë“¤ê³ 
         string nowKey = DateTime.Now.ToString(DTPattern);
-        // µñ¼Å³Ê¸®¿¡ ÀúÀå => ÃÑ °¹¼ö°¡ MAX_RANK + 1
+        // ë”•ì…”ë„ˆë¦¬ì— ì €ì¥ => ì´ ê°¯ìˆ˜ê°€ MAX_RANK + 1
         rankDic.Add(nowKey, score);
-        // ³»¸²Â÷¼øÀ¸·Î Á¤·Ä ÇÑ °ªÀ» »õ·Î¿î µñ¼Å³Ê¸®¿¡ ÀúÀå
+        // ë‚´ë¦¼ì°¨ìˆœìœ¼ë¡œ ì •ë ¬ í•œ ê°’ì„ ìƒˆë¡œìš´ ë”•ì…”ë„ˆë¦¬ì— ì €ì¥
         var newDic = rankDic.OrderByDescending(x => x.Value);
-        // ¹İÈ¯°ªÀ¸·Î ÃÖ´ë°ªÀ» ¼³Á¤ÇÏ°í
+        // ë°˜í™˜ê°’ìœ¼ë¡œ ìµœëŒ€ê°’ì„ ì„¤ì •í•˜ê³ 
         int nowRanking = MAX_RANK;
-        // ÀÎµ¦½º´Â 0À¸·Î ½ÃÀÛ
+        // ì¸ë±ìŠ¤ëŠ” 0ìœ¼ë¡œ ì‹œì‘
         int index = 0;
         foreach (var item in newDic)
         {
             PlayerPrefs.SetString($"RANKDATE{index}", item.Key);
             PlayerPrefs.SetInt($"RANKSCORE{index}", item.Value);
-            // ÇöÀç itemÀÌ nowKey°ª°ú °°À¸¸é ±×¶§ ÀÎµ¦½º°¡ ·©Å©°ª
+            // í˜„ì¬ itemì´ nowKeyê°’ê³¼ ê°™ìœ¼ë©´ ê·¸ë•Œ ì¸ë±ìŠ¤ê°€ ë­í¬ê°’
             if (item.Key.CompareTo(nowKey) == 0)
             {
                 nowRanking = index;
             }
-            // ÃÖ´ë·©Å© ¼ö¸¸Å­ µ¹¾ÒÀ¸¸é ³ª°¡±â
+            // ìµœëŒ€ë­í¬ ìˆ˜ë§Œí¼ ëŒì•˜ìœ¼ë©´ ë‚˜ê°€ê¸°
             if (++index == MAX_RANK) break;
         }
-        // ·©Å©°ª ¹İÈ¯
+        // ë­í¬ê°’ ë°˜í™˜
         return nowRanking;
     }
 }

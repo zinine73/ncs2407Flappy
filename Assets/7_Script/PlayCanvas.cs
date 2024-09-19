@@ -12,7 +12,7 @@ public class PlayCanvas : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bestText;
     [SerializeField] private Sprite[] medalSprite;
 
-    // ÀÚÁÖ ¾²´Â ScoreManagerÀÇ instance
+    // ìì£¼ ì“°ëŠ” ScoreManagerì˜ instance
     private ScoreManager smi;
 
     private void Start()
@@ -27,19 +27,19 @@ public class PlayCanvas : MonoBehaviour
 
     public void UpdateResult()
     {
-        // 3µî ¾ÈÀÌ¸é
+        // 3ë“± ì•ˆì´ë©´
         if (smi.Rank < 3)
         {
-            // ¸Ş´Ş Ç¥½Ã
+            // ë©”ë‹¬ í‘œì‹œ
             medal.sprite = medalSprite[smi.Rank];
         }
         else
         {
-            // ¸Ş´Ş ÀÌ¹ÌÁö ÀÚÃ¼¸¦ Ç¥½ÃÇÏÁö ¾Ê´Â´Ù
+            // ë©”ë‹¬ ì´ë¯¸ì§€ ìì²´ë¥¼ í‘œì‹œí•˜ì§€ ì•ŠëŠ”ë‹¤
             medal.gameObject.SetActive(false);
         }
         scoreResult.text = smi.Score.ToString();
-        // º£½ºÆ®½ºÄÚ¾î´Â ÃÖ°í½ºÄÚ¾î°ªÀ» º¸¿©ÁØ´Ù
+        // ë² ìŠ¤íŠ¸ìŠ¤ì½”ì–´ëŠ” ìµœê³ ìŠ¤ì½”ì–´ê°’ì„ ë³´ì—¬ì¤€ë‹¤
         bestText.text = PlayerPrefs.GetInt("RANKSCORE0", 0).ToString();
     }
 }
